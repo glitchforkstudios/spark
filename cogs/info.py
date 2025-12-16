@@ -25,7 +25,7 @@ class Info(commands.Cog):
         )
 
         embed.add_field(
-            name="My Creator",
+            name="My creator",
             value=f"Spark was created by **OverLack**, the founder of GlitchFork Studios. He also codes, maintains and hosts me all from within his own home.",
             inline=False
         )
