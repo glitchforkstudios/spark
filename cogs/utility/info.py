@@ -15,7 +15,8 @@ class Info(commands.Cog):
         embed = discord.Embed(
             title="Bot info",
             description="Here is some info about Spark (me!)",
-            colour=discord.Colour.from_str("#f1b50f")
+            colour=discord.Colour.from_str("#f1b50f"),
+            timestamp=datetime.datetime.now()
         )
 
         embed.add_field(

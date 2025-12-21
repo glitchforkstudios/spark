@@ -29,9 +29,13 @@ async def on_ready():
 
 # load all cog files
 async def load_cogs():
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py") and not filename.startswith("_"):
-            await bot.load_extension(f"cogs.{filename[:-3]}")
+    for root, _, files in os.walk("./cogs"):
+        for file in files:
+            if file.endswith(".py") and not file.startswith("_"):
+                path = os.path.join(root, file)
+                module = path.replace("/", ".").replace("\\", ".").replace(".py", "")
+                module = module.lstrip(".")
+                await bot.load_extension(module)
 
 async def main():
     async with bot:

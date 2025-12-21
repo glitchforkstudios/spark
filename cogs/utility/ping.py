@@ -15,7 +15,8 @@ class Ping(commands.Cog):
         embed = discord.Embed(
             title="Pong!",
             description="Bot is online and responding",
-            colour=discord.Colour.from_str("#f1b50f")
+            colour=discord.Colour.from_str("#f1b50f"),
+            timestamp=datetime.datetime.now()
         )
 
         embed.add_field(
@@ -28,10 +29,11 @@ class Ping(commands.Cog):
             icon_url=interaction.user.display_avatar.url
         )
 
-        embed.timestamp = datetime.datetime.now()
-
         print(f'{interaction.user.name} ran /{interaction.command.name} at 'f'{datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]}')
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.response.send_message(
+            embed=embed,
+            ephemeral=True
+        )
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Ping(bot))
